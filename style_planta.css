@@ -1,0 +1,401 @@
+ body {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        /* Estilos para la barra de advertencia fija */
+.warning-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #d32f2f;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 5px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+
+
+/* Ajuste del margen superior del contenido principal para evitar superposición */
+body {
+    margin-top: 60px; /* Altura de la barra de advertencia + margen */
+}
+
+ /* Estilos del div */
+ .remedios {
+    background: linear-gradient(135deg, rgb(97, 214, 97),rgb(4, 57, 4));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Media query para pantallas más pequeñas (smartphones) */
+@media (max-width: 600px) {
+    .remedios {
+        font-size: 18px;
+        padding: 15px;
+    }
+}
+
+/* Media query para pantallas más grandes (laptops) */
+@media (min-width: 601px) {
+    .remedios {
+        font-size: 24px;
+        padding: 20px;
+    }
+}
+
+/* Estilo general del botón */
+.btn {
+    display: inline-block; 
+    padding: 10px 20px;
+    font-size: 1em; 
+    color: white;
+    background-color: rgb(15, 158, 15); 
+    text-align: center; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Efecto al pasar el ratón (hover) */
+  .btn:hover {
+    background-color: rgb(97, 214, 97); 
+    transform: scale(1.05); 
+  }
+  
+  /* Hacer que el botón sea responsivo */
+  @media (max-width: 768px) {
+    .btn {
+      width: 80%; 
+      font-size: 1.2em; 
+      padding: 12px 24px; 
+    }
+  }
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+    .warning-bar {
+        font-size: 14px;
+        padding: 8px 5px;
+    }
+
+    body {
+        margin-top: 50px; /* Ajuste para dispositivos móviles */
+    }
+}
+       
+
+        .left-panel_hierbabuena {
+            background-image: url("https://www.gob.mx/cms/uploads/image/file/558566/mint-1549247_1920.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .left-panel_ruda {
+            background-image: url("https://www.tijuana.gob.mx/webpanel/catalogoPlantas/categorias/2021818122856373.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+
+        .left-panel_nispero {
+            background-image: url("https://www.gob.mx/cms/uploads/article/main_image/22142/n_spero-blog.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+
+        .left-panel_diente_de_leon {
+            background-image: url("http://www.conabio.gob.mx/malezasdemexico/asteraceae/taraxacum-officinale/fichas/ficha.7.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_santamaria {
+            background-image: url("https://plantasyflores.pro/wp-content/uploads/2020/01/Tanacetum_balsamita_02-696x398.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_dedito {
+            background-image: url("https://plantaytallo.com/wp-content/uploads/2020/08/planta-dedo-de-dios.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_sabila {
+            background-image: url("https://cdn0.bioenciclopedia.com/es/posts/0/2/4/sabila_420_600.webp");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_ambar {
+            background-image: url("https://imagenes.infojardin.com/subida/images/cqs1204325418p.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_bugambilia {
+            background-image: url("https://media.istockphoto.com/id/1953726812/es/foto/buganvilla-fucsia-floreciente.webp?a=1&b=1&s=612x612&w=0&k=20&c=xszCvmy0pIwbhme5ok1vxZyVg8jrL9YrUq69kpo9WZg=");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        .left-panel_vaporub {
+            background-image: url("https://heraldodemexico.com.mx/u/fotografias/m/2021/7/20/f848x477-398090_455893_5143.jpg");
+            background-size: cover;
+            flex: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: white;
+        }
+        
+        .right-panel {
+            background-color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInRight 2s ease forwards;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #228B22; /* Verde vibrante */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 20px;
+            border-bottom: 4px solid #145A32; /* Línea inferior para resaltar */
+            display: inline-block;
+            animation: fadeInScale 2s ease forwards, glow 1.5s infinite alternate;
+          }
+          
+          /* Adaptación a pantallas pequeñas */
+          @media (max-width: 480px) {
+            h1 {
+              font-size: 2rem;
+              letter-spacing: 1px;
+            }
+          }
+          
+          /* Animación de entrada */
+          @keyframes fadeInScale {
+            from {
+              opacity: 0;
+              transform: scale(0.8);
+            }
+            to {
+              opacity: 1;
+              transform: scale(1);
+            }
+          }
+          
+          /* Efecto de brillo suave */
+          @keyframes glow {
+            from {
+              text-shadow: 0 0 5px rgba(34, 139, 34, 0.6), 0 0 10px rgba(20, 90, 50, 0.6);
+            }
+            to {
+              text-shadow: 0 0 10px rgba(34, 139, 34, 0.8), 0 0 20px rgba(20, 90, 50, 0.8);
+            }
+          }
+
+        h5 {
+            text-align: left;
+            color: white;
+            animation: fadeInLeft 2s ease-in-out;
+        }
+
+        h2, p, ul {
+            opacity: 0;
+            animation: fadeIn 3s ease forwards;
+            animation-delay: 1s;
+        }
+
+        ul li {
+            animation: fadeInItem 3s ease forwards;
+            animation-delay: 2s;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, rgb(48, 184, 48),rgb(18, 89, 18));
+            color: white;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            animation: fadeIn 3s ease forwards;
+            animation-delay: 2s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+          }
+          
+          button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+            animation: none; /* Evita reiniciar la animación al pasar el mouse */
+          }
+          
+          /* Agregar una animación de rebote más fluida */
+          @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+          }
+          
+          button:active {
+            transform: scale(0.95);
+          }
+          
+          /* Animación de aparición */
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInItem {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 16px;
+                max-width: 100%;
+            }
+
+            ul, p {
+                font-size: 16px;
+            }
+        }
+   

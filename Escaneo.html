@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style_escaneo.css">
+</head>
+<body>
+
+    <div class="left-panel">
+        <h5>Empieza a escanear plantas para obtener la información benéfica que ésta ¡tiene para ti!</h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Bienvenido a MediPlant</h1>
+        <video id="video" autoplay playsinline></video>
+        <button class="btn btn-success btn-lg mt-4" onclick="init()">Iniciar Reconocimiento</button>
+        <div id="label-container" class="mt-3"></div>
+    </div>
+
+    <!-- Cargar TensorFlow.js y Teachable Machine -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    const URL = "https://teachablemachine.withgoogle.com/models/F-SD288xQ/";
+    const videoElement = document.getElementById("video");
+    
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+    
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+    
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        const facingMode = isMobile ? { exact: "environment" } : "user";
+    
+        const constraints = {
+            video: {
+                facingMode: facingMode,
+                width: { ideal: 1280 },
+                height: { ideal: 720 }
+            }
+        };
+    
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia(constraints);
+            videoElement.srcObject = stream;
+            videoElement.play();
+            videoElement.classList.add('playing');
+            window.requestAnimationFrame(loop);
+        } catch (err) {
+            console.error("Error accediendo a la cámara: ", err);
+            alert("No se pudo acceder a la cámara.");
+        }
+    }
+    
+    async function loop() {
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+    
+    async function predict() {
+        const prediction = await model.predict(videoElement);
+        const labelContainer = document.getElementById("label-container");
+        labelContainer.innerHTML = ""; 
+    
+        let highPrediction = null;
+    
+        for (let i = 0; i < maxPredictions; i++) {
+            const probability = prediction[i].probability.toFixed(2) * 100;
+            if (probability >= 70) {
+                const classPrediction = prediction[i].className.toLowerCase() + ": " + probability.toFixed(2) + "%";
+                const predictionElement = document.createElement("div");
+                predictionElement.innerText = classPrediction;
+                labelContainer.appendChild(predictionElement);
+            }
+    
+            if (probability >= 90) {
+                highPrediction = prediction[i].className.toLowerCase();
+            }
+        }
+    
+        labelContainer.classList.add('active');
+    
+        if (highPrediction) {
+            guardarHistorial(highPrediction);
+            const url = highPrediction + ".html"; 
+            setTimeout(() => {
+                window.location.href = url;
+            }, 5000);
+        } else {
+            setTimeout(() => {
+                window.location.href = "error.html";
+            }, 5000);
+        }
+    }
+    
+    function guardarHistorial(planta) {
+        const historial = JSON.parse(localStorage.getItem("historial")) || [];
+        const fecha = new Date().toLocaleString();
+        historial.push({ planta, fecha });
+        localStorage.setItem("historial", JSON.stringify(historial));
+    }
+    </script>
+</body>
+</html>    

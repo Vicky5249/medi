@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant - Níspero</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style_planta.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de advertencia fija -->
+    <div class="warning-bar">
+        <p>⚠ Advertencia: Consulte a un profesional de la salud antes de su consumo.</p>
+    </div>
+
+    <div class="left-panel_nispero">
+        <h5></h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Níspero <br> (Eriobotrya japonica)</h1>
+    
+    <center>
+         <button id="btnLectura" onclick="alternarLectura()">Escuchar lectura</button>
+         <button onclick="detenerLectura()">Detener</button>
+    </center> <br> <br>
+    
+        <div id="label-container" class="mt-3">
+            <p>El níspero es un árbol frutal originario del sudeste de China, ampliamente cultivado en diversas partes del mundo, incluido México. Sus frutos son pequeños, de color amarillo o anaranjado, y poseen un sabor dulce y ligeramente ácido. Además de su valor nutricional, el níspero tiene propiedades medicinales reconocidas.</p>
+            <div class="remedios"><h2>Usos medicinales</h2></div>
+            <ul id="texto-lectura">
+                <li>
+                    <strong>Propiedades digestivas y depurativas:</strong>
+                    El consumo de nísperos favorece la digestión y ayuda en la eliminación de toxinas, gracias a su alto contenido en fibra. :contentReference[oaicite:3]{index=3}
+                </li>
+                <li>
+                    <strong>Control de la glucosa:</strong> 
+                    Las hojas del níspero se utilizan en infusiones para ayudar a regular los niveles de azúcar en sangre, siendo beneficiosas para personas con diabetes. :contentReference[oaicite:4]{index=4}
+                </li>             
+                <li>
+                    <strong>Efecto antioxidante:</strong> 
+                    Rico en vitaminas A, B2 y C, el níspero actúa como antioxidante natural, ayudando a retrasar el envejecimiento prematuro de la piel. :contentReference[oaicite:5]{index=5}
+                </li>
+                <li>
+                    <strong>Propiedades antiinflamatorias y expectorantes:</strong>
+                    Las flores del níspero se utilizan por sus propiedades expectorantes, siendo útiles en el tratamiento de afecciones respiratorias. :contentReference[oaicite:6]{index=6}
+                </li>
+            </ul>
+            <div class="remedios">
+            <h2>Formas de uso</h2></div>
+            <ul>
+                <li><strong>Consumo directo:</strong> Frutos frescos como parte de la dieta diaria.</li>
+                <li><strong>Infusiones de hojas:</strong> Preparadas para aprovechar sus propiedades medicinales, especialmente en el control de la glucosa.</li>
+                <li><strong>Preparaciones culinarias:</strong> Elaboración de mermeladas, jaleas y postres con los frutos.</li>
+                <li><strong>Uso tópico:</strong> Aplicación de cataplasmas de hojas para aliviar inflamaciones o afecciones cutáneas.</li>
+            </ul>
+            <div class="remedios">
+            <h2>Preparaciones de Remedios con Níspero</h2>
+            </div>
+            <hr style="border: 3px solid black;">
+                           <h2>Infusión de Hojas de Níspero</h2> 
+                           
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>1 litro de agua</li>
+                            <li>10 hojas de níspero frescas</li>
+                            <li>Miel al gusto</li>
+                        </ul>
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Lavar bien las hojas y hervirlas en el agua durante 5 minutos.</li>
+                            <li>Dejar reposar 10 minutos y colar.</li>
+                            <li>Endulzar con miel al gusto y consumir una taza después de las comidas.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=example_video" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                        <div class="remedios">
+                            <h2>Riesgos y precauciones</h2>
+                            </div>
+                            <ul>
+                                <li><strong>Consumo excesivo de hojas:</strong> Las hojas contienen pequeñas cantidades de glucósidos cianogénicos, que en grandes cantidades pueden ser tóxicos.</li>
+                                <li><strong>Efecto laxante:</strong> Debido a su alto contenido en fibra, el consumo excesivo de nísperos puede causar diarrea.</li>
+                                <li><strong>Interacciones con medicamentos:</strong> Puede potenciar el efecto de medicamentos hipoglucemiantes, por lo que se recomienda precaución en personas con diabetes.</li>
+                                <li><strong>Reacciones alérgicas:</strong> Algunas personas pueden presentar sensibilidad a los frutos o a sus hojas.</li>
+                            </ul>
+                            <br><br>
+                            <center><a href="Escaneo.html" class="btn"> Realizar otro escaneo</a></center>
+                        </div>
+                    </div>
+                      <!-- JavaScript para lectura en voz alta -->
+<script>
+    let synth = window.speechSynthesis;
+    let speech = new SpeechSynthesisUtterance();
+    let voices = [];
+
+    // Cargar voces disponibles
+    function cargarVoces() {
+        voices = synth.getVoices();
+        if (voices.length > 0) {
+            speech.voice = voices.find(voice => voice.lang === "es-ES") || voices[0]; // Selecciona una voz en español si está disponible
+        }
+    }
+
+    function alternarLectura() {
+        const btn = document.getElementById("btnLectura");
+
+        if (synth.speaking && !synth.paused) {
+            synth.pause();
+            btn.innerText = "Reanudar lectura";
+        } else if (synth.paused) {
+            synth.resume();
+            btn.innerText = "Pausar lectura";
+        } else {
+            const texto = document.getElementById('label-container').innerText.trim();
+            if (texto === "") return;
+
+            speech.text = texto;
+            speech.rate = 1;  
+            speech.pitch = 1;
+            speech.volume = 1;
+
+            synth.speak(speech);
+            btn.innerText = "Pausar lectura";
+        }
+    }
+
+    // Detener completamente la lectura
+    function detenerLectura() {
+        synth.cancel();
+        document.getElementById("btnLectura").innerText = "Escuchar lectura";
+    }
+
+    // Cargar voces cuando estén disponibles
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = cargarVoces;
+    }
+
+    cargarVoces();
+</script>
+</body>
+</html>

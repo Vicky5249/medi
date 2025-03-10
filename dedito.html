@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant - Dedito de Dios</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style_planta.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de advertencia fija -->
+    <div class="warning-bar">
+        <p>⚠ Advertencia: Consulte a un profesional de la salud antes de su consumo.</p>
+    </div>
+
+    <div class="left-panel_dedito">
+        <h5></h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Dedito de Dios <br> (Ageratina altissima)</h1>
+    
+    <center>
+         <button id="btnLectura" onclick="alternarLectura()">Escuchar lectura</button>
+         <button onclick="detenerLectura()">Detener</button>
+    </center> <br> <br>
+    
+        <div id="label-container" class="mt-3">
+            <p>El dedito de Dios es una planta originaria de México, ampliamente utilizada en la medicina tradicional. Esta planta es conocida por sus propiedades antiinflamatorias, antimicrobianas y digestivas.</p>
+            <div class="remedios"><h2>Usos medicinales</h2></div>
+            <ul id="texto-lectura">
+                <li>
+                    <strong>Tratamiento de infecciones respiratorias:</strong>
+                    El dedito de Dios se utiliza para aliviar síntomas de resfriados y tos, especialmente en infusión.
+                </li>
+                <li>
+                    <strong>Propiedades antiinflamatorias:</strong>
+                    La planta se emplea para tratar dolores articulares, musculares y afecciones inflamatorias.
+                </li>             
+                <li>
+                    <strong>Mejora la digestión:</strong>
+                    Se utiliza en infusión para aliviar cólicos, dolores estomacales y mejorar la función digestiva.
+                </li>
+                <li>
+                    <strong>Propiedades antimicrobianas:</strong>
+                    El extracto de la planta se usa para tratar infecciones de la piel y otras afecciones dérmicas.
+                </li>
+            </ul>
+            <div class="remedios">
+            <h2>Formas de uso</h2></div>
+            <ul>
+                <li><strong>Infusión:</strong> Se prepara con las hojas secas de la planta para beber y aliviar molestias digestivas o respiratorias.</li>
+                <li><strong>Tópico:</strong> Se puede aplicar de forma tópica en forma de cataplasmas para tratar dolores musculares o lesiones.</li>
+                <li><strong>Extracto:</strong> Se obtiene de la planta para tratar infecciones leves y problemas de la piel.</li>
+            </ul>
+            <div class="remedios">
+            <h2>Preparaciones de Remedios con Dedito de Dios</h2>
+            </div>
+            <hr style="border: 3px solid black;">
+                           <h2>Infusión de Dedito de Dios</h2> 
+                           
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>4 tazas de agua</li>
+                            <li>6 hojas secas de dedito de Dios</li>
+                            <li>1 limón</li>
+                            <li>Miel al gusto</li>
+                        </ul>
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Hervir el agua y agregar las hojas de dedito de Dios.</li>
+                            <li>Dejar reposar durante 8 minutos.</li>
+                            <li>Colar y añadir el jugo de limón y miel al gusto.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=6Wr-e0l-Ph4" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                        <h2>                            Cataplasma de Dedito de Dios </h2>
+                   
+                        <strong>Ingredientes:</strong>
+                
+                        <ul>
+                            <li>5 hojas frescas de dedito de Dios</li>
+                            <li>1 cucharada de aceite de oliva</li>
+                        </ul>
+                        
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Macerar las hojas de dedito de Dios hasta obtener una pasta.</li>
+                            <li>Mezclar con el aceite de oliva y aplicar sobre la zona afectada.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=eLMXhhjkpA4" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                        <h2>                            Tópico de Dedito de Dios para Infecciones de la Piel
+                        </h2>
+                    
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>1 cucharada de extracto de dedito de Dios</li>
+                            <li>1 cucharada de gel de aloe vera</li>
+                        </ul>
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Mezclar los ingredientes hasta obtener una pasta homogénea.</li>
+                            <li>Aplícala sobre las áreas afectadas de la piel.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=GcYslSJDL5w" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                   <br>
+                        <div class="remedios"><h2>Riesgos y precauciones</h2></div>
+            <ul>
+                <li><strong>Toxicidad en dosis altas:</strong> Su uso excesivo puede causar efectos secundarios, como náuseas o vómitos.</li>
+                <li><strong>No recomendado para embarazadas:</strong> Puede causar reacciones adversas en mujeres embarazadas o en periodo de lactancia.</li>
+                <li><strong>Reacciones alérgicas:</strong> Algunas personas pueden experimentar reacciones alérgicas a los compuestos de la planta.</li>
+            </ul>
+            <br><br>
+            <center><a href="Escaneo.html" class="btn"> Realizar otro escaneo</a>
+            </center>
+
+            </div>
+    </div>
+
+    <!-- JavaScript para lectura en voz alta -->
+<script>
+    let synth = window.speechSynthesis;
+    let speech = new SpeechSynthesisUtterance();
+    let voices = [];
+
+    // Cargar voces disponibles
+    function cargarVoces() {
+        voices = synth.getVoices();
+        if (voices.length > 0) {
+            speech.voice = voices.find(voice => voice.lang === "es-ES") || voices[0]; // Selecciona una voz en español si está disponible
+        }
+    }
+
+    function alternarLectura() {
+        const btn = document.getElementById("btnLectura");
+
+        if (synth.speaking && !synth.paused) {
+            synth.pause();
+            btn.innerText = "Reanudar lectura";
+        } else if (synth.paused) {
+            synth.resume();
+            btn.innerText = "Pausar lectura";
+        } else {
+            const texto = document.getElementById('label-container').innerText.trim();
+            if (texto === "") return;
+
+            speech.text = texto;
+            speech.rate = 1;  
+            speech.pitch = 1;
+            speech.volume = 1;
+
+            synth.speak(speech);
+            btn.innerText = "Pausar lectura";
+        }
+    }
+
+    // Detener completamente la lectura
+    function detenerLectura() {
+        synth.cancel();
+        document.getElementById("btnLectura").innerText = "Escuchar lectura";
+    }
+
+    // Cargar voces cuando estén disponibles
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = cargarVoces;
+    }
+
+    cargarVoces();
+</script>
+</body>
+</html>

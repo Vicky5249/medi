@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant - Bugambilia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style_planta.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de advertencia fija -->
+    <div class="warning-bar">
+        <p>⚠ Advertencia: Consulte a un profesional de la salud antes de su consumo.</p>
+    </div>
+
+    <div class="left-panel_bugambilia">
+        <h5></h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Bugambilia <br> (Bougainvillea glabra)</h1>
+    
+    <center>
+         <button id="btnLectura" onclick="alternarLectura()">Escuchar lectura</button>
+         <button onclick="detenerLectura()">Detener</button>
+    </center> <br> <br>
+    
+        <div id="label-container" class="mt-3">
+            <p>La bugambilia es una planta ornamental originaria de América del Sur, especialmente cultivada en diversas regiones de México. Es conocida por sus coloridas brácteas que rodean sus flores, las cuales tienen propiedades medicinales.</p>
+            <div class="remedios"><h2>Usos medicinales</h2></div>
+            <ul id="texto-lectura">
+                <li>
+                    <strong>Tratamiento de afecciones respiratorias:</strong>
+                    Las infusiones de las flores de bugambilia se usan para aliviar tos y gripes.
+                </li>
+                <li>
+                    <strong>Propiedades antiinflamatorias:</strong> 
+                    Se usa en cataplasmas para reducir inflamaciones y dolor en las articulaciones.
+                </li>             
+                <li>
+                    <strong>Propiedades antisépticas:</strong> 
+                    Las hojas pueden ser aplicadas para limpiar heridas leves y prevenir infecciones.
+                </li>
+                <li>
+                    <strong>Acción sedante:</strong>
+                    Se utiliza como un calmante natural para el estrés y la ansiedad, gracias a sus propiedades relajantes.
+                </li>
+            </ul>
+            <div class="remedios">
+            <h2>Formas de uso</h2></div>
+            <ul>
+                <li><strong>Infusión:</strong> Flores secas o frescas hervidas en agua para beber o hacer gárgaras.</li>
+                <li><strong>Cataplasmas:</strong> Hojas machacadas sobre la piel para aliviar dolores o inflamaciones.</li>
+                <li><strong>Ungüento:</strong> Preparado con flores y aceite para masajes en casos de dolor muscular.</li>
+            </ul>
+            <div class="remedios">
+            <h2>Preparaciones de Remedios con Bugambilia</h2>
+            </div>
+            <hr style="border: 3px solid black;">
+                           <h2>Infusión de Bugambilia</h2> 
+                           
+                        <strong>Ingredientes:</strong>
+                        <ul>
+                            <li>4 tazas de agua</li>
+                            <li>6 flores de bugambilia</li>
+                            <li>1 cucharada de miel</li>
+                        </ul>
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Hervir el agua y agregar las flores.</li>
+                            <li>Dejar reposar 10 minutos.</li>
+                            <li>Colar y añadir miel al gusto.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=6Wr-e0l-Ph4" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                        <h2>                            Cataplasma de Bugambilia </h2>
+                   
+                        <strong>Ingredientes:</strong>
+                
+                        <ul>
+                            <li>Hojas frescas de bugambilia</li>
+                        </ul>
+                        
+                        <strong>Preparación:</strong>
+                        <ol>
+                            <li>Machacar las hojas hasta obtener una pasta.</li>
+                            <li>Aplicar sobre la zona afectada y cubrir con una venda.</li>
+                        </ol>
+                        <a href="https://www.youtube.com/watch?v=eLMXhhjkpA4" class="btn">Ver video tutorial</a>
+                        <hr style="border: 3px solid black;">
+                   <br>
+                        <div class="remedios"><h2>Riesgos y precauciones</h2></div>
+            <ul>
+                <li><strong>Reacciones alérgicas:</strong> En algunas personas puede causar irritación en la piel o problemas respiratorios.</li>
+                <li><strong>Consumo excesivo:</strong> El consumo en grandes cantidades puede causar malestares digestivos.</li>
+                <li><strong>Interacciones con medicamentos:</strong> Puede interferir con el efecto de algunos medicamentos sedantes.</li>
+            </ul>
+            <br><br>
+            <center><a href="Escaneo.html" class="btn"> Realizar otro escaneo</a>
+            </center>
+
+            </div>
+    </div>
+
+    <!-- JavaScript para lectura en voz alta -->
+<script>
+    let synth = window.speechSynthesis;
+    let speech = new SpeechSynthesisUtterance();
+    let voices = [];
+
+    // Cargar voces disponibles
+    function cargarVoces() {
+        voices = synth.getVoices();
+        if (voices.length > 0) {
+            speech.voice = voices.find(voice => voice.lang === "es-ES") || voices[0]; // Selecciona una voz en español si está disponible
+        }
+    }
+
+    function alternarLectura() {
+        const btn = document.getElementById("btnLectura");
+
+        if (synth.speaking && !synth.paused) {
+            synth.pause();
+            btn.innerText = "Reanudar lectura";
+        } else if (synth.paused) {
+            synth.resume();
+            btn.innerText = "Pausar lectura";
+        } else {
+            const texto = document.getElementById('label-container').innerText.trim();
+            if (texto === "") return;
+
+            speech.text = texto;
+            speech.rate = 1;  
+            speech.pitch = 1;
+            speech.volume = 1;
+
+            synth.speak(speech);
+            btn.innerText = "Pausar lectura";
+        }
+    }
+
+    // Detener completamente la lectura
+    function detenerLectura() {
+        synth.cancel();
+        document.getElementById("btnLectura").innerText = "Escuchar lectura";
+    }
+
+    // Cargar voces cuando estén disponibles
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = cargarVoces;
+    }
+
+    cargarVoces();
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant - Hierbabuena</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style_planta.css" rel="stylesheet">
+</head>
+<body>
+    <div class="warning-bar">
+        <p>⚠ Advertencia: Consulte a un profesional de la salud antes de su consumo.</p>
+    </div>
+
+    <div class="left-panel_hierbabuena">
+        <h5></h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Hierbabuena <br> (Mentha spicata)</h1>
+
+        <center>
+            <button id="btnLectura" onclick="alternarLectura()">Escuchar lectura</button>
+            <button onclick="detenerLectura()">Detener</button>
+        </center><br><br>
+
+        <div id="label-container" class="mt-3">
+            <p>La hierbabuena es una planta medicinal ampliamente utilizada en México para aliviar problemas digestivos, como cólicos y náuseas. También es conocida por sus propiedades calmantes y se usa para reducir dolores de cabeza.</p>
+            <div class="remedios"><h2>Usos medicinales</h2></div>
+            <ul id="texto-lectura">
+                <li><strong>Alivio de problemas digestivos:</strong> Es eficaz para tratar cólicos estomacales y aliviar la sensación de náuseas.</li>
+                <li><strong>Reducción de dolores de cabeza:</strong> Su infusión es comúnmente usada para calmar dolores leves de cabeza.</li>
+                <li><strong>Propiedades calmantes:</strong> Se utiliza también para promover la relajación y reducir el estrés.</li>
+            </ul>
+
+            <div class="remedios"><h2>Formas de uso</h2></div>
+            <ul>
+                <li><strong>Infusión:</strong> Preparar con las hojas frescas o secas para aliviar cólicos o dolores de cabeza.</li>
+                <li><strong>Uso tópico:</strong> Aplicar hojas frescas trituradas para aliviar picaduras o inflamaciones leves.</li>
+            </ul>
+
+            <div class="remedios"><h2>Preparaciones de Remedios con Hierbabuena</h2></div>
+            <hr style="border: 3px solid black;">
+            <h2>Infusión de Hierbabuena</h2>
+
+            <strong>Ingredientes:</strong>
+            <ul>
+                <li>1 taza de agua</li>
+                <li>5 hojas frescas de hierbabuena</li>
+                <li>Miel al gusto</li>
+            </ul>
+            <strong>Preparación:</strong>
+            <ol>
+                <li>Hervir el agua y agregar las hojas de hierbabuena.</li>
+                <li>Dejar reposar por 5-10 minutos.</li>
+                <li>Colar y añadir miel al gusto.</li>
+            </ol>
+            <a href="https://www.youtube.com/watch?v=6Wr-e0l-Ph4" class="btn">Ver video tutorial</a>
+            <hr style="border: 3px solid black;">
+            <br>
+            <div class="remedios"><h2>Riesgos y precauciones</h2></div>
+            <ul>
+                <li><strong>Interacciones con medicamentos:</strong> Puede interactuar con medicamentos anticoagulantes.</li>
+                <li><strong>No recomendado en altas dosis:</strong> Evitar su consumo excesivo, especialmente en mujeres embarazadas.</li>
+            </ul>
+
+            <br><br>
+            <center><a href="Escaneo.html" class="btn"> Realizar otro escaneo</a></center>
+        </div>
+    </div>
+<script>
+ let synth = window.speechSynthesis;
+    let speech = new SpeechSynthesisUtterance();
+    let voices = [];
+
+    // Cargar voces disponibles
+    function cargarVoces() {
+        voices = synth.getVoices();
+        if (voices.length > 0) {
+            speech.voice = voices.find(voice => voice.lang === "es-ES") || voices[0]; // Selecciona una voz en español si está disponible
+        }
+    }
+
+    function alternarLectura() {
+        const btn = document.getElementById("btnLectura");
+
+        if (synth.speaking && !synth.paused) {
+            synth.pause();
+            btn.innerText = "Reanudar lectura";
+        } else if (synth.paused) {
+            synth.resume();
+            btn.innerText = "Pausar lectura";
+        } else {
+            const texto = document.getElementById('label-container').innerText.trim();
+            if (texto === "") return;
+
+            speech.text = texto;
+            speech.rate = 1;  
+            speech.pitch = 1;
+            speech.volume = 1;
+
+            synth.speak(speech);
+            btn.innerText = "Pausar lectura";
+        }
+    }
+
+    // Detener completamente la lectura
+    function detenerLectura() {
+        synth.cancel();
+        document.getElementById("btnLectura").innerText = "Escuchar lectura";
+    }
+
+    // Cargar voces cuando estén disponibles
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = cargarVoces;
+    }
+
+    cargarVoces();
+</script>
+</body>
+</html>

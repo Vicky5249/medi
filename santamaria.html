@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlant - Santamaría</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style_planta.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Barra de advertencia fija -->
+    <div class="warning-bar">
+        <p>⚠ Advertencia: Consulte a un profesional de la salud antes de su consumo.</p>
+    </div>
+
+    <div class="left-panel_santamaria">
+        <h5></h5>
+    </div>
+
+    <div class="right-panel">
+        <h1>Santamaría <br> (Tanacetum parthenium)</h1>
+    
+    <center>
+         <button id="btnLectura" onclick="alternarLectura()">Escuchar lectura</button>
+         <button onclick="detenerLectura()">Detener</button>
+    </center> <br> <br>
+    
+        <div id="label-container" class="mt-3">
+            <p>La santamaría, también conocida como matricaria o feverfew, es una planta herbácea perenne originaria de Europa y ampliamente utilizada en la medicina tradicional por sus múltiples propiedades terapéuticas.</p>
+            <div class="remedios"><h2>Usos medicinales</h2></div>
+            <ul id="texto-lectura">
+                <li>
+                    <strong>Prevención de migrañas:</strong>
+                    Se ha utilizado para reducir la frecuencia y severidad de las migrañas.
+                </li>
+                <li>
+                    <strong>Propiedades antiinflamatorias:</strong> 
+                    Ayuda a aliviar dolores articulares y musculares.
+                </li>             
+                <li>
+                    <strong>Alivio de trastornos menstruales:</strong> 
+                    Utilizada para mitigar dolores menstruales y regular el ciclo.
+                </li>
+                <li>
+                    <strong>Tratamiento de problemas digestivos:</strong>
+                    Se emplea para mejorar la digestión y aliviar molestias gastrointestinales.
+                </li>
+            </ul>
+            <div class="remedios">
+            <h2>Formas de uso</h2></div>
+            <ul>
+                <li><strong>Infusión:</strong> Hojas secas en agua caliente para beber.</li>
+                <li><strong>Cápsulas o tabletas:</strong> Preparados comerciales con extracto de santamaría.</li>
+                <li><strong>Tintura:</strong> Extracto alcohólico de la planta para uso interno o externo.</li>
+                <li><strong>Cataplasmas:</strong> Hojas machacadas aplicadas sobre la piel para aliviar inflamaciones.</li>
+            </ul>
+            <div class="remedios">
+            <h2>Preparaciones de Remedios con Santamaría</h2>
+            </div>
+            <hr style="border: 3px solid black;">
+            <h2>Infusión de Santamaría</h2> 
+            <strong>Ingredientes:</strong>
+            <ul>
+                <li>1 taza de agua</li>
+                <li>1-2 cucharaditas de hojas secas de santamaría</li>
+                <li>Miel al gusto</li>
+            </ul>
+            <strong>Preparación:</strong>
+            <ol>
+                <li>Hervir el agua y verter sobre las hojas secas.</li>
+                <li>Dejar reposar 10 minutos.</li>
+                <li>Colar y añadir miel al gusto.</li>
+            </ol>
+            <a href="https://www.youtube.com/watch?v=example_video_1" class="btn">Ver video tutorial</a>
+            <hr style="border: 3px solid black;">
+            <h2>Tintura de Santamaría</h2>
+            <strong>Ingredientes:</strong>
+            <ul>
+                <li>100 gramos de hojas frescas de santamaría</li>
+                <li>500 ml de alcohol etílico (70%)</li>
+            </ul>
+            <strong>Preparación:</strong>
+            <ol>
+                <li>Colocar las hojas en un frasco de vidrio y cubrir con el alcohol.</li>
+                <li>Dejar macerar en un lugar oscuro durante 2 semanas, agitando ocasionalmente.</li>
+                <li>Filtrar y almacenar en una botella oscura.</li>
+            </ol>
+            <a href="https://www.youtube.com/watch?v=example_video_2" class="btn">Ver video tutorial</a>
+            <hr style="border: 3px solid black;">
+            <h2>Cataplasma de Santamaría para Dolores Musculares</h2>
+            <strong>Ingredientes:</strong>
+            <ul>
+                <li>Hojas frescas de santamaría</li>
+                <li>Agua caliente</li>
+            </ul>
+            <strong>Preparación:</strong>
+            <ol>
+                <li>Mojar las hojas en agua caliente hasta que estén blandas.</li>
+                <li>Aplicar directamente sobre la zona afectada y cubrir con un paño limpio.</li>
+                <li>Dejar actuar durante 15-20 minutos.</li>
+            </ol>
+           <br>
+           <div class="remedios"><h2>Riesgos y precauciones</h2></div>
+           <ul>
+               <li><strong>Posibles reacciones alérgicas:</strong> Puede causar erupciones cutáneas y problemas respiratorios en personas sensibles.</li>
+               <li><strong>No recomendada para embarazadas y lactantes:</strong> Puede inducir contracciones uterinas.</li>
+               <li><strong>Interacciones con medicamentos:</strong> Puede afectar la acción de anticoagulantes y medicamentos para la migraña.</li>
+               <li><strong>Efectos secundarios:</strong> Puede causar aftas bucales, irritación gastrointestinal y mareos en algunas personas.</li>
+           </ul>
+           <br><br>
+           <center><a href="Escaneo.html" class="btn"> Realizar otro escaneo</a></center>
+       </div>
+   </div>
+     <!-- JavaScript para lectura en voz alta -->
+<script>
+   let synth = window.speechSynthesis;
+   let speech = new SpeechSynthesisUtterance();
+   let voices = [];
+
+   // Cargar voces disponibles
+   function cargarVoces() {
+       voices = synth.getVoices();
+       if (voices.length > 0) {
+           speech.voice = voices.find(voice => voice.lang === "es-ES") || voices[0]; // Selecciona una voz en español si está disponible
+       }
+   }
+
+   function alternarLectura() {
+       const btn = document.getElementById("btnLectura");
+
+       if (synth.speaking && !synth.paused) {
+           synth.pause();
+           btn.innerText = "Reanudar lectura";
+       } else if (synth.paused) {
+           synth.resume();
+           btn.innerText = "Pausar lectura";
+       } else {
+           const texto = document.getElementById('label-container').innerText.trim();
+           if (texto === "") return;
+
+           speech.text = texto;
+           speech.rate = 1;  
+           speech.pitch = 1;
+           speech.volume = 1;
+
+           synth.speak(speech);
+           btn.innerText = "Pausar lectura";
+       }
+   }
+
+   // Detener completamente la lectura
+   function detenerLectura() {
+       synth.cancel();
+       document.getElementById("btnLectura").innerText = "Escuchar lectura";
+   }
+
+   // Cargar voces cuando estén disponibles
+   if (speechSynthesis.onvoiceschanged !== undefined) {
+       speechSynthesis.onvoiceschanged = cargarVoces;
+   }
+
+   cargarVoces();
+</script>
+</body>
+</html>
